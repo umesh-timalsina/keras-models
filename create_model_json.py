@@ -12,7 +12,6 @@ def write_model_to_json(model, filename):
     filepath = os.path.join('./jsons', filename)
     model_json_str = model.to_json()
     model_json_dict = json.loads(model_json_str)
-    print(type(model_json_dict))
     with open(filepath, 'w') as model_json_file:
         json.dump(model_json_dict, model_json_file, indent=4)
 
@@ -23,7 +22,8 @@ if __name__ == "__main__":
 
     current_model = SequentialSubClass()
     current_model.load_model()
-    write_model_to_json(current_model, 'sequential_subclass.json')
+    write_model_to_json(current_model,
+                        'sequential_subclass.json')
 
     current_model = seq_conv_mnist()
     write_model_to_json(current_model, 'sequential_conv_mnist.json')
@@ -35,5 +35,4 @@ if __name__ == "__main__":
     write_model_to_json(current_model, 'sequential_conv_lstm.json')
 
     current_model = seq_lstm()
-    write_model_to_json(current_model, 'sequentail_lstm.json')
-    
+    write_model_to_json(current_model, 'sequential_lstm.json')
