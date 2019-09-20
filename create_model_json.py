@@ -3,6 +3,9 @@ import json
 from models.sequential import (simple_dense, SequentialSubClass,
                                seq_conv_mnist, seq_conv_cifar,
                                conv_lstm, seq_lstm)
+from models.functional.rnn_babi import return_babi_rnn
+from models.functional.babi_memnn import return_baabi_memnn
+from models.functional.mnist_acgan import return_mnist_acgan
 
 
 def write_model_to_json(model, filename):
@@ -36,3 +39,12 @@ if __name__ == "__main__":
 
     current_model = seq_lstm()
     write_model_to_json(current_model, 'sequential_lstm.json')
+
+    current_model = return_babi_rnn()
+    write_model_to_json(current_model, 'functional_rnn_babi.json')
+
+    current_model = return_baabi_memnn()
+    write_model_to_json(current_model, 'functional_memnn_babi.json')
+
+    current_model = return_mnist_acgan()
+    write_model_to_json(current_model, 'function_mnist_acgan.json')
